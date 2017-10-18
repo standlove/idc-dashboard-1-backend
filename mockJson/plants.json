@@ -1,0 +1,107 @@
+[
+    {
+        "id": 203,
+        "latitude": 41.8781,
+        "longitude": -87.6298,
+        "region" : "North America",
+        "name" : "Chicago",
+        "yieldAverage" : 70,
+        "products" : [
+            {
+                "id" : 530,
+                "name" : "PPM",
+                "yield" : 84  
+            },
+            {
+                "id" : 530,
+                "name" : "COQ",
+                "yield" : 74.3  
+            },
+            {
+                "id" : 530,
+                "name" : "Scrap",
+                "yield" : 0.4  
+            },
+            {
+                "id" : 530,
+                "name" : "Sigma",
+                "yield" : 57  
+            },
+            {
+                "id" : 530,
+                "name" : "FPY",
+                "yield" : 65  
+            }
+        ]
+    },
+    {
+        "id": 109,
+        "latitude": 42.3601,
+        "longitude": -71.0589,
+        "region" : "North America",
+        "name" : "Boston",
+        "yieldAverage" : 90,
+        "products" : [
+            {
+                "id" : 530,
+                "name" : "PPM",
+                "yield" : 35  
+            },
+            {
+                "id" : 530,
+                "name" : "COQ",
+                "yield" : 54  
+            },
+            {
+                "id" : 530,
+                "name" : "Scrap",
+                "yield" : 43.2  
+            },
+            {
+                "id" : 530,
+                "name" : "Sigma",
+                "yield" : 86
+            },
+            {
+                "id" : 530,
+                "name" : "FPY",
+                "yield" : 33.2 
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "latitude": 48.8566,
+        "longitude": 2.3522,
+        "region" : "Europe",
+        "name" : "Paris",
+        "yieldAverage" : 83,
+        "products" : [
+            {
+                "id" : 530,
+                "name" : "PPM",
+                "yield" : 85  
+            },
+            {
+                "id" : 530,
+                "name" : "COQ",
+                "yield" :100  
+            },
+            {
+                "id" : 530,
+                "name" : "Scrap",
+                "yield" : 90  
+            },
+            {
+                "id" : 530,
+                "name" : "Sigma",
+                "yield" : 86
+            },
+            {
+                "id" : 530,
+                "name" : "FPY",
+                "yield" : 79.2 
+            }
+        ]
+    }
+]

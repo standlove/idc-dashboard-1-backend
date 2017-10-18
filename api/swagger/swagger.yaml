@@ -1,0 +1,364 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: IDC DASHBOARD API
+host: 127.0.0.1:10010
+basePath: /api/v1
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+
+  /plants:
+    x-swagger-router-controller: plant
+    get:
+      description: Returns all bids/request with the status provided
+      operationId: getPlants
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Response containing all the plants
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Plant'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /product/{productId}:
+    x-swagger-router-controller: plant
+    get:
+      description: Returns the product details
+      produces:
+        - application/json
+      operationId: getProduct
+      parameters:
+        - in: path
+          name: productId
+          description: The id of the product
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Product'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+ 
+  /product/{productId}/batch/{batchId}/daily:
+    x-swagger-router-controller: plant
+    get:
+      description: Returns the product details
+      produces:
+        - application/json
+      operationId: getBatchDaily
+      parameters:
+        - in: path
+          name: productId
+          description: The id of the product
+          required: true
+          type: string
+        - in: path
+          name: batchId
+          description: The id of the batch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/BatchMiq'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /product/{productId}/batch/{batchId}/weekly:
+    x-swagger-router-controller: plant
+    get:
+      description: Returns the product details
+      produces:
+        - application/json
+      operationId: getBatchWeekly
+      parameters:
+        - in: path
+          name: productId
+          description: The id of the product
+          required: true
+          type: string
+        - in: path
+          name: batchId
+          description: The id of the batch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/BatchMiq'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /product/{productId}/batch/{batchId}/monthly:
+    x-swagger-router-controller: plant
+    get:
+      description: Returns the product details
+      produces:
+        - application/json
+      operationId: getBatchMonthly
+      parameters:
+        - in: path
+          name: productId
+          description: The id of the product
+          required: true
+          type: string
+        - in: path
+          name: batchId
+          description: The id of the batch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/BatchMiq'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /product/{productId}/batch/{batchId}/top:
+    x-swagger-router-controller: plant
+    get:
+      description: Returns the product details
+      produces:
+        - application/json
+      operationId: getTopProduct
+      parameters:
+        - in: path
+          name: productId
+          description: The id of the product
+          required: true
+          type: string
+        - in: path
+          name: batchId
+          description: The id of the batch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/TopProduct'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /product/{productId}/batch/{batchId}/drop:
+    x-swagger-router-controller: plant
+    get:
+      description: Returns the product details
+      produces:
+        - application/json
+      operationId: getDropHistory
+      parameters:
+        - in: path
+          name: productId
+          description: The id of the product
+          required: true
+          type: string
+        - in: path
+          name: batchId
+          description: The id of the batch
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/DropHistory'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /swagger:
+    x-swagger-pipe: swagger_raw
+
+
+definitions:
+  BatchMiq:
+    type: array
+    items:
+          type: object
+          properties:
+            date:
+              type: string
+            yield:
+              type: number
+              format: double
+              
+  DropHistory:
+    type: array
+    items:
+          type: object
+          properties:
+            date:
+              type: string
+            productName:
+              type: string
+            yield:
+              type: number
+              format: double
+              
+  TopProduct:
+    type: array
+    items:
+          type: object
+          properties:
+            productName:
+              type: string
+            city:
+              type: string
+            bulletColor:
+              type: string
+
+  Plant:
+    type: object
+    description: Contains various information on a plant
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      latitude:
+        type: number
+        format: double
+      longitude:
+        type: number
+        format: double
+      region:
+        type: string
+      yieldAverage:
+        type: number
+        format: double
+      products:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+            name: 
+              type: string
+            yield:
+              type: number
+              format: double
+
+  Product:
+    type: object
+    description: Contains Product Data
+    properties:
+      id:
+        type: integer
+        format: int64
+      equipment:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+            name: 
+              type: string
+            yield:
+              type: number
+              format: double
+            batchGroups:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  name: 
+                    type: string
+                  yield:
+                    type: number
+                    format: double
+                  batches:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          format: int64
+                        name: 
+                          type: string
+                        yield:
+                          type: number
+                          format: double
+      performance:
+        type: object
+        properties:
+          scrapPercentage:
+            type: number
+            format: double
+          sigmaLevel:
+            type: number
+            format: double
+          ppm:
+            type: number
+            format: double
+          firstPassYield:
+            type: number
+            format: double
+          costQuality:
+            type: number
+            format: double
+
+
+
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
